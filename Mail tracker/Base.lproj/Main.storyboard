@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iI9-as-BLG">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Your Items-->
+        <scene sceneID="BWv-dO-NSN">
+            <objects>
+                <tableViewController id="Fsl-Dh-rpX" customClass="ItemTableViewController" customModule="Mail_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="SmM-eM-aeI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ItemTableViewCell" rowHeight="90" id="ydr-Nc-8Et" customClass="ItemTableViewCell" customModule="Mail_tracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="90"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ydr-Nc-8Et" id="cj8-LP-rQf">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="0iJ-3R-Lyy">
+                                            <rect key="frame" x="0.0" y="0.0" width="97" height="89"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mng-Cs-jqi">
+                                            <rect key="frame" x="105" y="8" width="207" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3K-cu-ccw" customClass="SentControl" customModule="Mail_tracker" customModuleProvider="target">
+                                            <rect key="frame" x="105" y="45" width="66" height="36"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l54-gb-aHm">
+                                            <rect key="frame" x="196" y="45" width="98" height="36"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="date" destination="l54-gb-aHm" id="CAK-0R-JNi"/>
+                                    <outlet property="nameLabel" destination="mng-Cs-jqi" id="zjj-od-Tqt"/>
+                                    <outlet property="photoImageView" destination="0iJ-3R-Lyy" id="ZAn-Hu-s9d"/>
+                                    <outlet property="sentControl" destination="b3K-cu-ccw" id="bpn-go-Eyh"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="GjN-vU-g1P"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Fsl-Dh-rpX" id="65v-OM-JST"/>
+                            <outlet property="delegate" destination="Fsl-Dh-rpX" id="U9h-Iw-O2Y"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Your Items" id="ksv-mH-ZaN">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DXM-eh-7RD">
+                            <connections>
+                                <segue destination="Xxg-aV-Nw1" kind="modal" identifier="AddItem" id="KoP-uK-3GU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JTL-JJ-WXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="652.5" y="156.33802816901408"/>
+        </scene>
+        <!--new Item-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ItemViewController" customModule="Mail_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="DlX-FN-RUe">
+                                <rect key="frame" x="20" y="80" width="288" height="386"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="560" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter new item name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZO-yK-0c1">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="jnx-jH-cMg">
+                                        <rect key="frame" x="0.0" y="42" width="288" height="288"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="jnx-jH-cMg" secondAttribute="height" multiplier="1:1" id="jUJ-1H-ZJd"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="MYT-Bn-2DX" appends="YES" id="BSX-ep-BqT"/>
+                                        </connections>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="rNx-4Y-c1E" customClass="SentControl" customModule="Mail_tracker" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="342" width="240" height="44"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="sZO-yK-0c1" firstAttribute="leading" secondItem="DlX-FN-RUe" secondAttribute="leading" id="3mY-M2-wh4"/>
+                                    <constraint firstAttribute="trailing" secondItem="sZO-yK-0c1" secondAttribute="trailing" id="t6n-qa-RBp"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DlX-FN-RUe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="2lu-39-cNN"/>
+                            <constraint firstItem="DlX-FN-RUe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="lZx-fA-8bV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DlX-FN-RUe" secondAttribute="trailing" constant="-4" id="tUe-1q-g4H"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="new Item" id="qWr-JJ-8Jo">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eWZ-kR-cQn">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="2nF-iF-Lhg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="y5A-61-nwv">
+                            <connections>
+                                <segue destination="qyY-97-zEz" kind="unwind" unwindAction="unwindToItemListWithSender:" id="mg0-4g-EyL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="sZO-yK-0c1" id="iE2-Lg-R0n"/>
+                        <outlet property="photoImageView" destination="jnx-jH-cMg" id="kkm-W7-6ui"/>
+                        <outlet property="saveButton" destination="y5A-61-nwv" id="nyM-6w-fpz"/>
+                        <outlet property="sentControl" destination="rNx-4Y-c1E" id="AiP-7z-jif"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="qyY-97-zEz" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="MYT-Bn-2DX">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="aM0-Jb-kZQ"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2133.75" y="135.21126760563379"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="g2H-S7-X3d">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iI9-as-BLG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Ee-0G-yqP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Fsl-Dh-rpX" kind="relationship" relationship="rootViewController" id="9El-Io-OTb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TMD-qG-hUB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-345" y="156.33802816901408"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4D1-OO-dAb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xxg-aV-Nw1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hRH-pg-RgM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="5lu-Cm-WV1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EjV-Zm-e6l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1438" y="704"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="defaultPhoto" width="540" height="540"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="GjN-vU-g1P"/>
+    </inferredMetricsTieBreakers>
+</document>
