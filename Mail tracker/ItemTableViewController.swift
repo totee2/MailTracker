@@ -14,6 +14,7 @@ class ItemTableViewController: UITableViewController {
     // MARK: Properties
     
     var items = [Item]()
+    var sent:Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,16 +157,18 @@ class ItemTableViewController: UITableViewController {
             }
             
                 guard let selectedItemCell = sender as? ItemTableViewCell else {
-                    fatalError("Unexpected Sender : \(sender)")
-            }
-                guard let indexPath = tableView.indexPath(for: selectedItemCell) else {
-                    fatalError("The selected cell is not being displayed by the table")
+                    fatalError("Unexpected Sender : \(String(describing: sender))")
             }
             
-            let selectedItem = items[indexPath.row]
+                
+            let selectedItem = items.first{$0.name == selectedItemCell.nameLabel.text}!
+                
+                
+            print("item \(selectedItem)")
+            sent = selectedItem.sent
             itemDetailViewController.item = selectedItem
             
-        default: fatalError("Unexpected Segue Identifier ; \(segue.identifier)")
+        default: fatalError("Unexpected Segue Identifier ; \(String(describing: segue.identifier))")
         }
         
         /*if segue.identifier == "ShowDetail"{
@@ -185,11 +188,29 @@ class ItemTableViewController: UITableViewController {
     @IBAction func unwindToItemList(sender: UIStoryboardSegue){
         if let sourceViewController = sender.source as? ItemViewController, let item = sourceViewController.item {
             
+            
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // update an existing item
-                print(selectedIndexPath.row)
-                items[selectedIndexPath.row] = item
-                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                if(item.sent == sent) {
+                    print(selectedIndexPath.row)
+                    items[selectedIndexPath.row] = item
+                    tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                } else {
+                    print(selectedIndexPath.row)
+                    print(selectedIndexPath.section)
+                    tableView.deleteRows(at: [selectedIndexPath], with: .fade)
+                    print("dkjhs")
+                    var newIndexPath = IndexPath();
+                    if(item.sent == 0) {
+                        newIndexPath = IndexPath(row: getSectionItems(section: 1).count, section: 1)
+                    } else if(item.sent == 1) {
+                        newIndexPath = IndexPath(row: getSectionItems(section: 0).count, section: 0)
+                    }
+                    
+                    tableView.insertRows(at: [newIndexPath], with: .bottom)
+
+                    print("dkjhs")
+                }
             }
             else {
                 //add a new item
