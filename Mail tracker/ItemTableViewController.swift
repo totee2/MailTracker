@@ -57,10 +57,10 @@ class ItemTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String {
         if(section == 1){
-            return "Sent"
+            return "Sent (\(getSectionItems(section: 1).count))"
         }
         else {
-            return "Received"
+            return "Received (\(getSectionItems(section: 0).count))"
         }
     }
     
@@ -190,25 +190,30 @@ class ItemTableViewController: UITableViewController {
             
             
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                for i in 0..<items.count {
+                    if (items[i].name == item.name) {
+                        items[i] = item;
+                    }
+                }
+                
                 // update an existing item
                 if(item.sent == sent) {
                     print(selectedIndexPath.row)
-                    items[selectedIndexPath.row] = item
                     tableView.reloadRows(at: [selectedIndexPath], with: .none)
                 } else {
                     print(selectedIndexPath.row)
                     print(selectedIndexPath.section)
-                    tableView.deleteRows(at: [selectedIndexPath], with: .fade)
+                    //tableView.deleteRows(at: [selectedIndexPath], with: .fade)
                     print("dkjhs")
-                    var newIndexPath = IndexPath();
+                    /*var newIndexPath = IndexPath();
                     if(item.sent == 0) {
                         newIndexPath = IndexPath(row: getSectionItems(section: 1).count, section: 1)
                     } else if(item.sent == 1) {
                         newIndexPath = IndexPath(row: getSectionItems(section: 0).count, section: 0)
                     }
-                    
-                    tableView.insertRows(at: [newIndexPath], with: .bottom)
-
+                    */
+                    //tableView.insertRows(at: [newIndexPath], with: .bottom)
+                    self.tableView.reloadData()
                     print("dkjhs")
                 }
             }
